@@ -1,0 +1,13 @@
+services:
+  db:
+    image: redis:alpine
+    volumes:
+      - db_data:/data
+  web:
+    build: .
+    depends_on:
+      - db
+    restart: on-failure
+
+volumes:
+  db_data:
